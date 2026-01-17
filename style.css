@@ -329,8 +329,8 @@ footer {
   bottom: 100px;       /* fica acima do whatsapp */
   right: 20px;
 
-  width: 260px;        /* aumentado 4x */
-  height: 260px;       /* aumentado 4x */
+  width: 120px;        /* aumentado 4x */
+  height: 120px;       /* aumentado 4x */
 
   border-radius: 50%;
   overflow: hidden;
