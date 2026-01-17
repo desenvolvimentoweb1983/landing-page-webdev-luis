@@ -1,0 +1,372 @@
+/* ==========================
+   RESET & BASE
+========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+body {
+  color: #fff;
+  overflow-x: hidden;
+  line-height: 1.6;
+  background: #0a0a0a;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==========================
+   HERO - COR DE FUNDO 1
+========================== */
+header {
+  position: relative;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 2rem;
+
+  /* COR DE FUNDO 1 – GRADIENTE IMPACTANTE */
+  background: linear-gradient(135deg, #ff0055, #6a00ff);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+
+header .banner {
+  width: 90%;
+  max-width: 800px;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  transition: 0.4s;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
+
+header .banner:hover {
+  transform: scale(1.03);
+}
+
+header h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+header p {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  max-width: 700px;
+}
+
+/* ==========================
+   BOTÕES
+========================== */
+button {
+  background: #25d366;
+  color: white;
+
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: none;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: 0.3s;
+
+  box-shadow: 0 0 25px rgba(37,211,102,0.5);
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px rgba(37,211,102,0.8);
+}
+
+/* ==========================
+   BENEFÍCIOS - COR DE FUNDO 2
+========================== */
+.beneficios {
+  padding: 5rem 2rem 7rem 2rem;
+  text-align: center;
+
+  /* COR DE FUNDO 2 */
+  background: linear-gradient(135deg, #00c3ff, #0072ff);
+}
+
+.beneficios h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* ==========================
+   CARDS – CORAÇÃO DO SITE
+========================== */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  justify-content: center;
+  align-items: center;
+
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+
+  width: 300px;
+  height: 220px;
+
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+
+  transition: all 0.3s;
+
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* TEXTO DENTRO DO CARD */
+.card-texto {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  text-align: center;
+
+  background: rgba(0, 0, 0, 0.85);
+
+  color: #25d366;
+  font-weight: bold;
+  font-size: 18px;
+
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.card:hover .card-texto {
+  opacity: 1;
+}
+
+/* ==========================
+   OFERTA - COR DE FUNDO 3
+========================== */
+.oferta {
+  padding: 5rem 2rem;
+  text-align: center;
+
+  /* COR DE FUNDO 3 */
+  background: linear-gradient(135deg, #ff9100, #ff3d00);
+}
+
+.oferta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.oferta p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 1rem auto;
+}
+
+.imagem-servico {
+  width: 95%;
+  max-width: 900px;
+  border-radius: 20px;
+  margin: 2rem auto;
+  display: block;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
+
+/* ==========================
+   CTA FINAL - COR DE FUNDO 4
+========================== */
+.cta-final {
+  padding: 5rem 2rem;
+  text-align: center;
+
+  /* COR DE FUNDO 4 */
+  background: linear-gradient(135deg, #0f0c29, #302b63);
+}
+
+.cta-final h2 {
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+}
+
+.cta-final p {
+  font-size: 1.2rem;
+  max-width: 750px;
+  margin: 0 auto 2rem auto;
+}
+
+.imagem-final {
+  width: 95%;
+  max-width: 900px;
+  border-radius: 20px;
+  margin: 2rem auto;
+  display: block;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+}
+
+/* ==========================
+   FOOTER
+========================== */
+footer {
+  background: #080808;
+  text-align: center;
+  padding: 1.2rem;
+  color: #aaa;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* ==========================
+   WHATSAPP FLUTUANTE
+========================== */
+.whatsapp-float {
+  position: fixed;
+
+  width: 65px;
+  height: 65px;
+
+  bottom: 20px;
+  right: 20px;
+
+  background: #25d366;
+  color: white;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 34px;
+
+  z-index: 9999;
+
+  animation: pulse 2s infinite;
+
+  box-shadow: 0 0 25px rgba(37,211,102,0.6);
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+@media(max-width: 768px){
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .beneficios h2,
+  .oferta h2,
+  .cta-final h2 {
+    font-size: 1.6rem;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
+
+/* ==========================
+   ANIMAÇÃO HERO
+========================== */
+@keyframes gradientMove {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+/* ==========================
+   LOGO FLUTUANTE ANIMADO (4x MAIOR)
+========================== */
+.logo-float {
+  position: fixed;
+  bottom: 100px;       /* fica acima do whatsapp */
+  right: 20px;
+
+  width: 260px;        /* aumentado 4x */
+  height: 260px;       /* aumentado 4x */
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+
+  z-index: 9999;
+
+  opacity: 0;                /* começa invisível */
+  transform: scale(0.5);
+
+  transition: all 0.6s ease;
+
+  animation: pulseLogo 2.5s infinite;
+}
+
+.logo-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Quando ativado pelo JS */
+.logo-float.ativo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Animação suave tipo “respiração” */
+@keyframes pulseLogo {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
