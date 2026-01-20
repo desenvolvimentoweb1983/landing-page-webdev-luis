@@ -307,10 +307,6 @@ footer {
   .cta-final h2 {
     font-size: 1.6rem;
   }
-
-  .card {
-    width: 90%;
-  }
 }
 
 /* ==========================
@@ -369,4 +365,116 @@ footer {
   0% { transform: scale(1); }
   50% { transform: scale(1.08); }
   100% { transform: scale(1); }
+}
+
+/* ==========================
+   ESTRUTURA GERAL DO SCROLL
+========================== */
+
+.video-scroll {
+  width: 100%;
+  overflow-x: auto;
+  background: transparent;
+}
+
+/* esconde barra de rolagem */
+.video-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.video-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==========================
+   CONTAINER DOS VÍDEOS
+========================== */
+
+.video-wrapper {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+
+  justify-content: center;
+  align-items: center;
+
+  /* LARGURA EXATA para caber 4 vídeos + gaps */
+  width: fit-content;
+
+  margin: 0 auto;
+
+  background: transparent;
+}
+
+/* ==========================
+   CONFIGURAÇÃO DO VÍDEO
+========================== */
+
+.video-wrapper video {
+  display: block;
+
+  width: 300px;       /* tamanho base ideal para caber 4 */
+  height: auto;
+
+  border-radius: 16px;
+
+  object-fit: cover;
+
+  cursor: pointer;
+
+  background: transparent;
+
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-wrapper video:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 28px rgba(0,0,0,0.6);
+}
+
+/* ==========================
+   RESPONSIVIDADE REAL
+========================== */
+
+/* Telas grandes – garante 4 vídeos visíveis */
+@media (min-width: 1400px) {
+  .video-wrapper video {
+    width: 320px;
+  }
+}
+
+/* Notebooks médios */
+@media (max-width: 1200px) {
+  .video-wrapper video {
+    width: 280px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .video-wrapper {
+    gap: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .video-wrapper video {
+    width: 240px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  .video-wrapper {
+    gap: 10px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .video-wrapper video {
+    width: 200px;
+  }
 }

@@ -1,6 +1,14 @@
 # 🚀 Landing Page – WebDev Luís
 
-Projeto de landing page profissional desenvolvido para apresentação de serviços de desenvolvimento web, com foco em conversão de clientes, experiência visual moderna e interatividade.
+Projeto de landing page profissional desenvolvido com foco em conversão de clientes, experiência do usuário e apresentação moderna de serviços de desenvolvimento web.
+
+---
+
+## 🌐 Demonstração Online
+
+Acesse o projeto publicado:
+
+👉 [https://landing-page-webdev-luis.vercel.app/](https://landing-page-webdev-luis.vercel.app/)
 
 ---
 
@@ -13,6 +21,7 @@ Esta landing page foi criada com o propósito de:
 * Demonstrar habilidades técnicas em HTML, CSS e JavaScript
 * Servir como portfólio profissional online
 * Oferecer uma experiência visual moderna e interativa
+* Converter visitantes em potenciais clientes
 
 ---
 
@@ -26,6 +35,7 @@ O projeto foi desenvolvido utilizando:
 * Font Awesome
 * Boas práticas de UI e UX
 * Design responsivo
+* Estrutura otimizada para marketing digital
 
 ---
 
@@ -36,7 +46,8 @@ O projeto foi desenvolvido utilizando:
 * Botões de contato direto via WhatsApp
 * Elementos flutuantes animados
 * Efeitos de hover e interações dinâmicas
-* Layout otimizado para marketing digital
+* Layout otimizado para captação de clientes
+* Navegação intuitiva e objetiva
 
 ---
 
@@ -58,7 +69,7 @@ landing-page-webdev-luis/
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 🚀 Como Executar Localmente
 
 1. Faça o clone do repositório:
 
@@ -66,19 +77,50 @@ landing-page-webdev-luis/
 git clone https://github.com/desenvolvimentoweb1983/landing-page-webdev-luis.git
 ```
 
-2. Abra o arquivo:
+2. Acesse a pasta do projeto:
+
+```
+cd landing-page-webdev-luis
+```
+
+3. Abra o arquivo abaixo diretamente no navegador:
 
 ```
 index.html
 ```
 
-Diretamente no navegador ou através de uma extensão como Live Server no VS Code.
+Você também pode utilizar uma extensão como Live Server no VS Code para melhor experiência de desenvolvimento.
+
+---
+
+## 🔮 Melhorias Futuras
+
+Algumas evoluções planejadas para o projeto:
+
+* Integração com formulário de contato funcional
+* Otimização para SEO
+* Integração com Google Analytics
+* Versão do projeto em React
+* Painel administrativo para edição de conteúdos
+* Melhorias contínuas de performance
+
+---
+
+## 🎯 Para Clientes
+
+Esta landing page pode ser adaptada para qualquer tipo de negócio, como:
+
+* Pequenas empresas
+* Profissionais autônomos
+* Igrejas e instituições
+* Comércios locais
+* Prestadores de serviços
+
+Se você precisa de um site profissional para divulgar seu trabalho ou empresa, entre em contato.
 
 ---
 
 ## 📱 Contato
-
-Se você gostou do projeto ou deseja um site profissional:
 
 **WebDev Luís**
 📞 WhatsApp: 19 97408-2724
@@ -88,12 +130,10 @@ Se você gostou do projeto ou deseja um site profissional:
 
 ## 📌 Status do Projeto
 
-✅ Concluído e em constante evolução
+✅ Publicado e em constante evolução
 
 ---
 
 ## 📄 Licença
 
-Este projeto foi desenvolvido para fins de estudo e portfólio profissional.
-
-Todos os direitos reservados – WebDev Luís
+Projeto desenvolvido por WebDev Luís para uso como portfólio profissional.
