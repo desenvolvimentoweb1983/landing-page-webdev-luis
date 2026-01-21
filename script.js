@@ -1,6 +1,6 @@
-// ==========================
-// REDIRECIONAMENTO WHATSAPP
-// ==========================
+/* ==========================
+   WHATSAPP
+========================== */
 function whatsServico() {
   window.open(
     "https://wa.me/5519974082724?text=Olá!%20Estou%20interessado%20no%20SERVIÇO%20que%20vi%20no%20site",
@@ -15,131 +15,148 @@ function whatsProduto() {
   );
 }
 
-// ==========================
-// INTERAÇÃO COM OS CARDS
-// ==========================
-const cards = document.querySelectorAll('.card');
+/* ==========================
+   CARDS – INTERAÇÃO SUAVE
+========================== */
+const cards = document.querySelectorAll(".card");
 
 cards.forEach(card => {
-  // EFEITO TILT 3D NOS CARDS
-  card.addEventListener('mousemove', (e) => {
+  card.addEventListener("mousemove", e => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * 10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-    card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+
+    const rotateX = ((y / rect.height) - 0.5) * 10;
+    const rotateY = ((x / rect.width) - 0.5) * 10;
+
+    card.style.transform = `perspective(800px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
   });
 
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "perspective(800px) rotateX(0) rotateY(0)";
   });
 });
 
-const whatsappBtn = document.querySelector('.whatsapp-float');
+/* ==========================
+   LOGO FLUTUANTE
+========================== */
+const logo = document.querySelector(".logo-float");
 
-if (whatsappBtn) {
-  whatsappBtn.addEventListener('mouseenter', () => {
-    for (let i = 0; i < 5; i++) {
-      const particle = document.createElement('span');
-      particle.classList.add('particle');
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      whatsappBtn.appendChild(particle);
-      setTimeout(() => particle.remove(), 800);
-    }
+if (logo) {
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    logo.style.opacity = scrollY > 80 ? "1" : "0";
   });
 }
 
-// ==========================
-// LOGO FLUTUANTE INTERATIVO
-// ==========================
-window.addEventListener("load", () => {
-  const logo = document.querySelector(".logo-float");
-  if (!logo) return;
+/* ==========================
+   OVERLAY DE VÍDEO (FULLSCREEN CONTROLADO)
+========================== */
+let overlayAtivo = null;
 
-  // Aparece após 2 segundos
-  setTimeout(() => {
-    logo.classList.add("ativo");
-  }, 2000);
-});
-
-// Esconder quando chegar no final da página
-window.addEventListener("scroll", () => {
-  const logo = document.querySelector(".logo-float");
-  if (!logo) return;
-
-  const scrollPosition = window.innerHeight + window.scrollY;
-  const pageHeight = document.body.offsetHeight;
-
-  if (scrollPosition >= pageHeight - 100) {
-    logo.classList.remove("ativo");
-  } else {
-    logo.classList.add("ativo");
-  }
-});
-
-// ==========================
-// ABRIR VÍDEO EM TELA CHEIA AO CLICAR
-// ==========================
 function abrirVideo(videoElem) {
-  const src = videoElem.src;
+  if (overlayAtivo) return;
 
-  const overlay = document.createElement('div');
-  overlay.style.position = 'fixed';
-  overlay.style.top = 0;
-  overlay.style.left = 0;
-  overlay.style.width = '100%';
-  overlay.style.height = '100%';
-  overlay.style.background = 'rgba(0,0,0,0.95)';
-  overlay.style.display = 'flex';
-  overlay.style.alignItems = 'center';
-  overlay.style.justifyContent = 'center';
-  overlay.style.zIndex = 99999;
-  overlay.onclick = () => document.body.removeChild(overlay);
+  const overlay = document.createElement("div");
+  overlayAtivo = overlay;
 
-  const video = document.createElement('video');
-  video.src = src;
+  overlay.style.position = "fixed";
+  overlay.style.inset = "0";
+  overlay.style.background = "rgba(0,0,0,0.92)";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.zIndex = "100000";
+
+  const video = document.createElement("video");
+  video.src = videoElem.src;
   video.autoplay = true;
-  video.muted = false;
-  video.loop = true;
-  video.style.maxWidth = '90%';
-  video.style.maxHeight = '90%';
-  video.style.borderRadius = '15px';
-  video.style.pointerEvents = 'none'; // clique fecha overlay
+  video.controls = true;
+  video.playsInline = true;
+  video.controlsList = "nodownload nofullscreen noremoteplayback";
+  video.style.maxWidth = "90vw";
+  video.style.maxHeight = "90vh";
+  video.style.borderRadius = "16px";
+  video.style.background = "#000";
 
   overlay.appendChild(video);
   document.body.appendChild(overlay);
+  document.body.style.overflow = "hidden";
+
+  /* FECHAR AO CLICAR FORA */
+  overlay.addEventListener("click", e => {
+    if (e.target === overlay) fecharOverlay();
+  });
+
+  /* ESC NO DESKTOP */
+  document.addEventListener("keydown", escHandler);
+
+  /* BOTÃO VOLTAR DO CELULAR */
+  history.pushState({ video: true }, "");
+  window.addEventListener("popstate", fecharOverlay);
 }
 
-// ==========================
-// INTERATIVIDADE NOS VÍDEOS – FADE DE VOLUME AO PASSAR O MOUSE
-// ==========================
-const videos = document.querySelectorAll('.video-wrapper video');
+function fecharOverlay() {
+  if (!overlayAtivo) return;
+
+  document.body.removeChild(overlayAtivo);
+  overlayAtivo = null;
+
+  document.body.style.overflow = "";
+  document.removeEventListener("keydown", escHandler);
+  window.removeEventListener("popstate", fecharOverlay);
+}
+
+function escHandler(e) {
+  if (e.key === "Escape") fecharOverlay();
+}
+
+/* ==========================
+   VÍDEOS DA PÁGINA (ÁUDIO UX)
+========================== */
+const videos = document.querySelectorAll(".video-wrapper video");
 
 videos.forEach(video => {
-  // Começa silenciado
   video.muted = true;
-  video.volume = 0; // volume inicial zero
-  let volumeInterval;
+  video.playsInline = true;
+  video.controls = false;
 
-  // Ao passar o mouse, aumenta o volume suavemente
-  video.addEventListener('mouseenter', () => {
-    video.muted = false;
-    clearInterval(volumeInterval);
-    volumeInterval = setInterval(() => {
-      if (video.volume < 1) video.volume = Math.min(video.volume + 0.05, 1);
-    }, 50);
+  /* Desktop – hover */
+  video.addEventListener("mouseenter", () => {
+    if (window.innerWidth >= 768) {
+      video.muted = false;
+      fadeVolume(video, 0.4, 300);
+    }
   });
 
-  // Ao sair do mouse, diminui o volume suavemente
-  video.addEventListener('mouseleave', () => {
-    clearInterval(volumeInterval);
-    volumeInterval = setInterval(() => {
-      if (video.volume > 0) video.volume = Math.max(video.volume - 0.05, 0);
-      if (video.volume === 0) video.muted = true;
-    }, 50);
+  video.addEventListener("mouseleave", () => {
+    if (window.innerWidth >= 768) {
+      fadeVolume(video, 0, 300, true);
+    }
+  });
+
+  /* Mobile – toque consciente */
+  video.addEventListener("click", () => {
+    video.muted = false;
+    fadeVolume(video, 0.4, 300);
   });
 });
+
+/* ==========================
+   FUNÇÃO PARA FADE DE VOLUME SUAVE
+========================== */
+function fadeVolume(video, targetVolume, duration = 300, muteIfZero = false) {
+  let interval = 50;
+  let step = (targetVolume - video.volume) / (duration / interval);
+
+  const fade = setInterval(() => {
+    let newVolume = video.volume + step;
+    if ((step > 0 && newVolume >= targetVolume) || (step < 0 && newVolume <= targetVolume)) {
+      video.volume = targetVolume;
+      if (muteIfZero && targetVolume === 0) video.muted = true;
+      clearInterval(fade);
+    } else {
+      video.volume = newVolume;
+    }
+  }, interval);
+}

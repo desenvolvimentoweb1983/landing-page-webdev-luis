@@ -21,32 +21,41 @@ a {
 }
 
 /* ==========================
-   HERO - COR DE FUNDO 1
+   HERO - BANNER
 ========================== */
 header {
   position: relative;
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-
   padding: 2rem;
-
-  /* COR DE FUNDO 1 – GRADIENTE IMPACTANTE */
   background: linear-gradient(135deg, #ff0055, #6a00ff);
   background-size: 400% 400%;
   animation: gradientMove 12s ease infinite;
 }
 
+header h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
 header .banner {
   width: 90%;
-  max-width: 800px;
+  max-width: 1280px;
   border-radius: 20px;
   margin-bottom: 1.5rem;
-  transition: 0.4s;
+  transition: transform 0.4s;
   box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
 
@@ -54,35 +63,19 @@ header .banner:hover {
   transform: scale(1.03);
 }
 
-header h1 {
-  font-size: 2.6rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
-header p {
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
-  max-width: 700px;
-}
-
 /* ==========================
    BOTÕES
 ========================== */
 button {
-  background: #25d366;
+  background: linear-gradient(135deg,#25d366,#128c7e);
   color: white;
-
   padding: 1rem 2rem;
   border-radius: 50px;
   border: none;
-
   font-size: 1.2rem;
   font-weight: bold;
-
   cursor: pointer;
-  transition: 0.3s;
-
+  transition: all 0.3s;
   box-shadow: 0 0 25px rgba(37,211,102,0.5);
 }
 
@@ -92,54 +85,87 @@ button:hover {
 }
 
 /* ==========================
-   BENEFÍCIOS - COR DE FUNDO 2
+   VÍDEOS HORIZONTAIS
 ========================== */
-.beneficios {
-  padding: 5rem 2rem 7rem 2rem;
-  text-align: center;
-
-  /* COR DE FUNDO 2 */
-  background: linear-gradient(135deg, #00c3ff, #0072ff);
+.video-scroll {
+  width: 100%;
+  overflow-x: auto;
+  padding: 16px 0;
+  background: transparent;
+  scroll-behavior: smooth;
 }
 
-.beneficios h2 {
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  text-shadow: 0 0 10px rgba(0,0,0,0.2);
+.video-scroll::-webkit-scrollbar {
+  display: none;
+}
+.video-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.video-wrapper {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.video-wrapper video {
+  display: block;
+  width: 300px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-wrapper video:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 28px rgba(0,0,0,0.6);
 }
 
 /* ==========================
-   CARDS – CORAÇÃO DO SITE
+   BENEFÍCIOS – TÍTULO
+========================== */
+.beneficios h2 {
+  font-size: 2rem;
+  text-align: center;       /* centraliza o título */
+   margin: 0 auto 2rem auto;
+  max-width: 800px;
+  line-height: 1.3;
+}
+
+/* ==========================
+   BENEFÍCIOS – CARDS
 ========================== */
 .cards {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-
   justify-content: center;
   align-items: center;
-
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .card {
   position: relative;
-
   width: 300px;
   height: 220px;
-
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
-
-  transition: all 0.3s;
-
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  background: #111;
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) perspective(800px);
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
@@ -147,33 +173,25 @@ button:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* TEXTO DENTRO DO CARD */
 .card-texto {
   position: absolute;
-
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 20px;
   text-align: center;
-
-  background: rgba(0, 0, 0, 0.85);
-
+  padding: 20px;
+  background: rgba(0,0,0,0.75);
   color: #25d366;
   font-weight: bold;
   font-size: 18px;
-
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: opacity 0.4s ease;
 }
 
 .card:hover .card-texto {
@@ -181,19 +199,18 @@ button:hover {
 }
 
 /* ==========================
-   OFERTA - COR DE FUNDO 3
+   OFERTA
 ========================== */
 .oferta {
   padding: 5rem 2rem;
   text-align: center;
-
-  /* COR DE FUNDO 3 */
-  background: linear-gradient(135deg, #ff9100, #ff3d00);
+  background: linear-gradient(135deg,#ff9100,#ff3d00);
 }
 
 .oferta h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .oferta p {
@@ -212,19 +229,18 @@ button:hover {
 }
 
 /* ==========================
-   CTA FINAL - COR DE FUNDO 4
+   CTA FINAL
 ========================== */
 .cta-final {
   padding: 5rem 2rem;
   text-align: center;
-
-  /* COR DE FUNDO 4 */
-  background: linear-gradient(135deg, #0f0c29, #302b63);
+  background: linear-gradient(135deg,#0f0c29,#302b63);
 }
 
 .cta-final h2 {
   font-size: 2.3rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .cta-final p {
@@ -255,226 +271,99 @@ footer {
 }
 
 /* ==========================
+   LOGO FLUTUANTE
+========================== */
+.logo-float {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+  z-index: 9999;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.6s ease;
+}
+
+.logo-float img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+/* ==========================
    WHATSAPP FLUTUANTE
 ========================== */
 .whatsapp-float {
   position: fixed;
-
   width: 65px;
   height: 65px;
-
   bottom: 20px;
   right: 20px;
-
-  background: #25d366;
+  background: linear-gradient(135deg,#25d366,#128c7e);
   color: white;
-
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 34px;
-
   z-index: 9999;
-
-  animation: pulse 2s infinite;
-
   box-shadow: 0 0 25px rgba(37,211,102,0.6);
+  transition: all 0.3s ease;
 }
 
-@keyframes pulse {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.12); }
+.whatsapp-float:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 40px rgba(37,211,102,0.9);
 }
 
 /* ==========================
-   RESPONSIVO
+   RESPONSIVIDADE MOBILE-FIRST
 ========================== */
-@media(max-width: 768px){
+@media(max-width: 1200px) {
+  .video-wrapper video { width: 280px; }
+}
 
-  header h1 {
-    font-size: 2rem;
-  }
-
-  header p {
-    font-size: 1rem;
-  }
-
+@media(max-width: 992px) {
+  header h1 { font-size: 2.2rem; }
+  header p { font-size: 1rem; }
   .beneficios h2,
   .oferta h2,
-  .cta-final h2 {
-    font-size: 1.6rem;
-  }
+  .cta-final h2 { font-size: 1.8rem; }
+  .video-wrapper video { width: 240px; }
+}
+
+@media(max-width: 768px) {
+  header { padding: 1.5rem; }
+  .video-wrapper { gap: 12px; padding: 0 16px; justify-content: flex-start; }
+  .video-wrapper video { width: 200px; }
+  .cards { gap: 16px; }
+  .card { width: 90%; height: auto; min-height: 180px; }
+}
+
+@media(max-width: 480px) {
+  .video-wrapper { gap: 10px; padding: 0 12px; }
+  .video-wrapper video { width: 160px; }
+  header h1 { font-size: 1.8rem; }
+  header p { font-size: 0.95rem; }
+  .beneficios h2,
+  .oferta h2,
+  .cta-final h2 { font-size: 1.5rem; }
+  button { padding: 0.8rem 1.5rem; font-size: 1rem; }
 }
 
 /* ==========================
-   ANIMAÇÃO HERO
+   ANIMAÇÕES
 ========================== */
 @keyframes gradientMove {
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
-}
-/* ==========================
-   LOGO FLUTUANTE ANIMADO (4x MAIOR)
-========================== */
-.logo-float {
-  position: fixed;
-  bottom: 100px;       /* fica acima do whatsapp */
-  right: 20px;
-
-  width: 120px;        /* aumentado 4x */
-  height: 120px;       /* aumentado 4x */
-
-  border-radius: 50%;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: white;
-  box-shadow: 0 0 25px rgba(0,0,0,0.4);
-
-  z-index: 9999;
-
-  opacity: 0;                /* começa invisível */
-  transform: scale(0.5);
-
-  transition: all 0.6s ease;
-
-  animation: pulseLogo 2.5s infinite;
-}
-
-.logo-float img {
-  width: 100%;
-  height: 100%;
-  object-fit: center;
-}
-
-/* Quando ativado pelo JS */
-.logo-float.ativo {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Animação suave tipo “respiração” */
-@keyframes pulseLogo {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-  100% { transform: scale(1); }
-}
-
-/* ==========================
-   ESTRUTURA GERAL DO SCROLL
-========================== */
-
-.video-scroll {
-  width: 100%;
-  overflow-x: auto;
-  background: transparent;
-}
-
-/* esconde barra de rolagem */
-.video-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.video-scroll {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* ==========================
-   CONTAINER DOS VÍDEOS
-========================== */
-
-.video-wrapper {
-  display: flex;
-  gap: 16px;
-  padding: 16px;
-
-  justify-content: center;
-  align-items: center;
-
-  /* LARGURA EXATA para caber 4 vídeos + gaps */
-  width: fit-content;
-
-  margin: 0 auto;
-
-  background: transparent;
-}
-
-/* ==========================
-   CONFIGURAÇÃO DO VÍDEO
-========================== */
-
-.video-wrapper video {
-  display: block;
-
-  width: 300px;       /* tamanho base ideal para caber 4 */
-  height: auto;
-
-  border-radius: 16px;
-
-  object-fit: cover;
-
-  cursor: pointer;
-
-  background: transparent;
-
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.video-wrapper video:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 28px rgba(0,0,0,0.6);
-}
-
-/* ==========================
-   RESPONSIVIDADE REAL
-========================== */
-
-/* Telas grandes – garante 4 vídeos visíveis */
-@media (min-width: 1400px) {
-  .video-wrapper video {
-    width: 320px;
-  }
-}
-
-/* Notebooks médios */
-@media (max-width: 1200px) {
-  .video-wrapper video {
-    width: 280px;
-  }
-}
-
-/* Tablets */
-@media (max-width: 768px) {
-  .video-wrapper {
-    gap: 12px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .video-wrapper video {
-    width: 240px;
-  }
-}
-
-/* Celulares */
-@media (max-width: 480px) {
-  .video-wrapper {
-    gap: 10px;
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  .video-wrapper video {
-    width: 200px;
-  }
 }
